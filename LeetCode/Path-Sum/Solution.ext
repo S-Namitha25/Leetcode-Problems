@@ -1,11 +1,4 @@
-class Solution {
-    public boolean hasPathSum(TreeNode root, int targetSum) {
-        if(root==null){
-            return false;
-        }
-        if(root.left==null && root.right== null){
-            return targetSum== root.val;
-        }
-        int balance= targetSum - root.val;
-        return hasPathSum(root.left, balance) || hasPathSum(root.right, balance);
-    }}
+- If the current node is None, return False.
+- If it's a leaf node, check if the remaining sum equals the node’s value.
+- Recursively check the left and right subtrees with the updated target sum.
+- Return True if a valid path is found, otherwise return False.
