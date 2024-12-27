@@ -1,1 +1,35 @@
-L0 → L1 → … → Ln - 1 → Ln
+class Solution {
+    public void reorderList(ListNode head) {
+        if (head == null || head.next == null){
+            return;
+        }
+        ListNode second = head, first = head;
+        while (first != null && first.next != null) {
+            second = second.next;
+            first = first.next.next;
+        }
+        ListNode secondHalf = reverse(second.next);
+        second.next = null; 
+        ListNode firstHalf = head;
+        while (secondHalf != null) {
+            ListNode temp1 = firstHalf.next;
+            ListNode temp2 = secondHalf.next;
+
+            firstHalf.next = secondHalf;
+            secondHalf.next = temp1;
+
+            firstHalf = temp1;
+            secondHalf = temp2;
+        }}
+        private ListNode reverse(ListNode head) {
+            ListNode prev = null, curr = head;
+            while (curr != null) {
+                ListNode next = curr.next;
+                curr.next = prev;
+                prev = curr;
+                curr = next;
+                }
+                return prev;
+    }}
+ 
+    
